@@ -6,9 +6,9 @@ namespace RpgSaltConsola
     [Serializable]
     public class ClaseAGuardar
     {
-        private Personaje protagonista;
+        public Personaje Protagonista { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        /*-----PROPIEDADES-----*/
-        public Personaje Protagonista { get { return protagonista; } }
     }
 }
