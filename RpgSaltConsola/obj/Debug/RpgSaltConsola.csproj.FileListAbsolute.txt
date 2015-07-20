@@ -1,0 +1,12 @@
+G:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe.config
+G:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe
+G:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.pdb
+G:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.csprojResolveAssemblyReference.cache
+G:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.exe
+G:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.pdb
+M:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe.config
+M:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.exe
+M:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.pdb
+M:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe
+M:\RpgSaltConsola\RpgSaltConsola\bin\Debug\RpgSaltConsola.pdb
+M:\RpgSaltConsola\RpgSaltConsola\obj\Debug\RpgSaltConsola.csprojResolveAssemblyReference.cache
