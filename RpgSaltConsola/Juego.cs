@@ -17,7 +17,8 @@ namespace RpgSaltConsola
             if(Bienvenida.NuevaPartida)
             {
                 Introduccion a = new Introduccion();
-                a.Run();
+                Partida partida = new Partida(a.Run());
+                partida.Run();
             }
             else
             {

@@ -9,6 +9,9 @@ namespace RpgSaltConsola
         private static CancionBeep intro;
         private static Personaje p;
         private Thread hiloMusica;
+        private static string nombre, sexo;
+        private static int fuerza, inteligencia, destreza, constitucion, atBas
+            , defensa, vida, arquetipo;
 
         public Introduccion()
         {
@@ -19,14 +22,15 @@ namespace RpgSaltConsola
 
         public Personaje Run()
         {
-            p = new Personaje();
             Console.Clear();
             hiloMusica.Start();
             MostrarMensajes();
             EleccionArquetipo();
             DistribucionParametros();
+            CalculosFinales();
             
-            return p;
+            return new Personaje(nombre, sexo, fuerza, destreza, inteligencia
+                , constitucion, vida, atBas, defensa);
         }
 
 
@@ -41,9 +45,9 @@ namespace RpgSaltConsola
 
         public void EleccionArquetipo()
         {
-            string nombre, sexo, aux;
+            string aux;
             string[] arquetipos = { "Guerrero", "Arquero", "Mago", "Botarga" };
-            int opcion;
+
             bool terminado = false;
 
             Console.WriteLine("Introduce tu nombre: ");
@@ -64,12 +68,12 @@ namespace RpgSaltConsola
 
                 do 
                 { 
-                    opcion = Hardware.LeerEntero(); 
-                } while (opcion < 1 || opcion > arquetipos.Length);
+                    arquetipo = Hardware.LeerEntero(); 
+                } while (arquetipo < 1 || arquetipo > arquetipos.Length);
 
                 Console.Clear();
                 Console.WriteLine("Seguro que quieres ser {0}?"
-                    , arquetipos[opcion-1]);
+                    , arquetipos[arquetipo-1]);
                 Console.WriteLine("s/n");
                 do
                 {
@@ -79,7 +83,7 @@ namespace RpgSaltConsola
                 if (aux.CompareTo("s") == 0)
                 {
                     Console.WriteLine("LLegaras a ser un gran {0} pues"
-                        , arquetipos[opcion-1]);
+                        , arquetipos[arquetipo-1]);
                     terminado = true;
                 }
                 else
@@ -91,12 +95,15 @@ namespace RpgSaltConsola
 
             Console.Clear();
 
-            switch(opcion)
+            switch(arquetipo)
             {
                 case 1:
+                    atBas = 20;
+                    defensa = 15;
+                    
                     Console.WriteLine("ARQUETIPO GUERRERO\n\n");
                     Console.WriteLine("El guerrero es un soldado que utiliza la espada como arma"+
-                           "principal, pero esta  entrenado para utilizar todo tipo de"+
+                           "principal, pero esta  \nentrenado para utilizar todo tipo de"+
                            "armas.\nTiene una gran defensa y utiliza su fuerza para "+
                            "asentar poderosos golpes\n Viene de tierras lejanas donde"+
                            "es un poderoso heroe.");
@@ -110,6 +117,9 @@ namespace RpgSaltConsola
                     break;
 
                 case 2:
+                    atBas = 15;
+                    defensa = 10;
+
                     Console.WriteLine("ARQUETIPO ARQUERO\n");
                     Console.WriteLine("El arquero es un soldado que dispara flechas con un arco,"+
                            "una varilla hecha de\nacero, madera u otra materia "+
@@ -125,6 +135,9 @@ namespace RpgSaltConsola
                     break;
 
                 case 3:
+                    atBas = 5;
+                    defensa = 5;
+                    
                     Console.WriteLine("ARQUETIPO MAGO\n\n");
                     Console.WriteLine("El mago en esta version beta no esta desarrollado, como "+
                            "programadores te recomendamos reiniciar el juego y coger"+
@@ -138,6 +151,9 @@ namespace RpgSaltConsola
                     break;
 
                 case 4:
+                    atBas = 99;
+                    defensa = 99;
+
                     Console.WriteLine("ARQUETIPO BOTARGA\n");
                     Console.WriteLine("\nBienvenido a la clase botarga, como programadores nos "+
                            "llena de orgullo que \nhayais llegado hasta este arquetipo,"+
@@ -162,7 +178,6 @@ namespace RpgSaltConsola
         public void DistribucionParametros ()
         {
             int numPuntos = 10;
-            int fuerza, destreza, inteligencia, constitucion;
             bool terminado = false;
             ConsoleKeyInfo tecla;
 
@@ -289,6 +304,13 @@ namespace RpgSaltConsola
                 System.Threading.Thread.Sleep(30);
             }
 
+        }
+    
+        public void CalculosFinales ()
+        {
+            atBas += (fuerza - 5);
+            defensa += (constitucion - 5);
+            vida = constitucion * 10;
         }
     }
 }

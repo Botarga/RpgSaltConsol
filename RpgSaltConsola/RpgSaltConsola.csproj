@@ -49,7 +49,7 @@
     <Compile Include="Introduccion.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="MapaAscii.cs" />
-    <Compile Include="NuevaPartida.cs" />
+    <Compile Include="Partida.cs" />
     <Compile Include="Personaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializador.cs" />
