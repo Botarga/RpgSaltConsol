@@ -7,6 +7,7 @@ namespace RpgSaltConsola
     public class Introduccion
     {
         private static CancionBeep intro;
+        private static Personaje p;
         private Thread hiloMusica;
 
         public Introduccion()
@@ -16,19 +17,22 @@ namespace RpgSaltConsola
         }
 
 
-        public void Run()
+        public Personaje Run()
         {
+            p = new Personaje();
             Console.Clear();
             hiloMusica.Start();
             MostrarMensajes();
             EleccionArquetipo();
             DistribucionParametros();
+            
+            return p;
         }
+
 
         public void MostrarMensajes()
         {
-            string[] texto = { "hola", "mundo", "tercera linea", "cuarta linea"
-                                 , "5", "15", "23", "24"};
+            string[] texto = { "Aqui va la historia", "en varias lineas"};
             Hardware.TextoDecorado(texto, 10);
             hiloMusica.Suspend();
             Console.ResetColor();
@@ -85,9 +89,27 @@ namespace RpgSaltConsola
                 }
             } while (!terminado);
 
+            Console.Clear();
+
             switch(opcion)
             {
                 case 1:
+                    Console.WriteLine("ARQUETIPO GUERRERO\n\n");
+                    Console.WriteLine("El guerrero es un soldado que utiliza la espada como arma"+
+                           "principal, pero esta  entrenado para utilizar todo tipo de"+
+                           "armas.\nTiene una gran defensa y utiliza su fuerza para "+
+                           "asentar poderosos golpes\n Viene de tierras lejanas donde"+
+                           "es un poderoso heroe.");
+                    Console.WriteLine("\nSon muy utiles atacando de cuerpo a cuerpo, poseen una"+
+                           "agilidad limitada.\n");
+                    Console.WriteLine("\nLucha con valentia contra las fuerzas malevolas y veras"+
+                           " tu recompensa...\n");
+ 
+                    Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
+ 
+                    break;
+
+                case 2:
                     Console.WriteLine("ARQUETIPO ARQUERO\n");
                     Console.WriteLine("El arquero es un soldado que dispara flechas con un arco,"+
                            "una varilla hecha de\nacero, madera u otra materia "+
@@ -102,14 +124,38 @@ namespace RpgSaltConsola
 
                     break;
 
-                case 2:
-                    break;
                 case 3:
+                    Console.WriteLine("ARQUETIPO MAGO\n\n");
+                    Console.WriteLine("El mago en esta version beta no esta desarrollado, como "+
+                           "programadores te recomendamos reiniciar el juego y coger"+
+                           "otra clase, aunque no es imposible pasarse el juego con "+
+                           "esta clase, si que es un poco inutil :D");
+
+                    Console.WriteLine("\nLucha con valentia contra las fuerzas malevolas y veras"+
+                           " tu recompensa...\n");
+ 
+                    Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
                     break;
+
                 case 4:
+                    Console.WriteLine("ARQUETIPO BOTARGA\n");
+                    Console.WriteLine("\nBienvenido a la clase botarga, como programadores nos "+
+                           "llena de orgullo que \nhayais llegado hasta este arquetipo,"+
+                           " te queda un ultimo reto... \n\nEn alguna casilla escondida"+
+                           " del reino de Salt, esta escondido el boss supremo, "+
+                           "\nsolo aparecera en una batalla aleatoria, y solo en esa"+
+                           " coordenada, encuentralo \nacaba con el y devuelve la paz"+
+                           " a estas tierras, por cierto, para poder luchar\ncontra ese"+
+                           " boss, te hara falta haber derrotado a los 3 bosses de las"+
+                           " mazmorra \nnuevamente, aunque ya veras que siendo botarga "+
+                           " no te costara mucho");
+
                     break;
+
                 default: break;
             }
+            Console.ReadLine();
+
         }
 
     
