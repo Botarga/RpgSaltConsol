@@ -164,7 +164,7 @@ namespace RpgSaltConsola
                 case "e":
                     break;
                 case "p":
-                    Inventory inv = new Inventory();
+                    Inventory inv = new Inventory(c.Protagonista);
                     inv.Run();
 
                     break;

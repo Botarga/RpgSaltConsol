@@ -4,7 +4,7 @@ namespace RpgSaltConsola
 {
     public class Juego
     {
-        public const bool NO_INTRO = false;
+        public const bool NO_INTRO = true;
 
         public Juego()
         {
