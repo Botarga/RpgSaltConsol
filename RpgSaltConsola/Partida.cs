@@ -7,7 +7,8 @@ namespace RpgSaltConsola
         /*-----ATRIBUTOS-----*/
         private ClaseAGuardar c;
         private bool[] posibilidadMovimiento = new bool[4];
-        
+        private bool exitGame = false;
+
         //Mapa del mundo
         private string[] mapa =
         {
@@ -149,11 +150,38 @@ namespace RpgSaltConsola
             return posible;
         }
 
+        
+        private void ManageOption(string option)
+        {
+            switch(option.ToLower())
+            {
+                case "n":
+                    break;
+                case "s":
+                    break;
+                case "o":
+                    break;
+                case "e":
+                    break;
+                case "p":
+                    Inventory inv = new Inventory();
+                    inv.Run();
+
+                    break;
+                default:
+                    break;
+
+            }
+        }
 
         public void Run()
         {
-            MostrarInformacion();
-            Console.ReadLine();
+            while (!exitGame)
+            {
+                MostrarInformacion();
+                ManageOption(Console.ReadLine());
+            }
+            
         }
     }
 }

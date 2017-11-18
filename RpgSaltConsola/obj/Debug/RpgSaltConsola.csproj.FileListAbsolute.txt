@@ -16,3 +16,10 @@ C:\Users\botarga\Documents\Visual Studio 2013\Projects\RpgSaltConsola\RpgSaltCon
 C:\Users\botarga\Documents\Visual Studio 2013\Projects\RpgSaltConsola\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe
 C:\Users\botarga\Documents\Visual Studio 2013\Projects\RpgSaltConsola\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.pdb
 C:\Users\botarga\Documents\Visual Studio 2013\Projects\RpgSaltConsola\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.csprojResolveAssemblyReference.cache
+C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe.config
+C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe
+C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.pdb
+C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.csprojResolveAssemblyReference.cache
+C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.csproj.CoreCompileInputs.cache
+C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.exe
+C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.pdb

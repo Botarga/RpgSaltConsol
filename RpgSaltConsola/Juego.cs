@@ -4,6 +4,8 @@ namespace RpgSaltConsola
 {
     public class Juego
     {
+        public const bool NO_INTRO = false;
+
         public Juego()
         {
             Console.Clear();

@@ -6,6 +6,17 @@ namespace RpgSaltConsola
 {
     public class Introduccion
     {
+        private static Random generador = new Random(DateTime.Now.Millisecond);
+
+
+        struct Estrella
+        {
+            public int x;
+            public int y;
+            public int incX;
+            public int incY;
+        }
+
         private static CancionBeep intro;
         private static Personaje p;
         private Thread hiloMusica;
@@ -19,12 +30,14 @@ namespace RpgSaltConsola
             hiloMusica = new Thread(intro.Reproducir);
         }
 
-
         public Personaje Run()
         {
             Console.Clear();
-            hiloMusica.Start();
-            MostrarMensajes();
+            if (!Juego.NO_INTRO)
+            {
+                hiloMusica.Start();
+                MostrarMensajes();
+            }
             EleccionArquetipo();
             DistribucionParametros();
             CalculosFinales();
@@ -36,9 +49,38 @@ namespace RpgSaltConsola
 
         public void MostrarMensajes()
         {
-            string[] texto = { "Aqui va la historia", "en varias lineas"};
-            Hardware.TextoDecorado(texto, 10);
-            hiloMusica.Suspend();
+            string[] texto = { "Aquí debería ir la historia del juego...",
+                "pero realmente este juego no ha tenido nunca puta historia,",
+                "y lo poco que se puso daba vergüenza ajena.",
+                "2017 y aun no se puede considerar que se haya acabado la pesadilla ",
+                "del juego este de mierda con los beeps que ya ni siquiera suenan ",
+                "como sonaban en aquel windows XP.",
+                "Pero al menos desde aquel entonces ahora se poner hilos.",
+                "Voy a ver si consigo dejar esto un poco como era en su día pero multiplataforma y algo más estable. ",
+                "Bienvenido al RPG SALT!",
+                "Mario (siempre Botarga)"};
+
+            int refLinea = 0, refLetra = 0;
+
+            
+
+            while (refLinea < texto.Length)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(12 + refLetra, (refLinea* 2) + 2);
+                Console.Write(texto[refLinea][refLetra++]);
+                if (refLetra == texto[refLinea].Length)
+                {
+                    refLetra = 0;
+                    refLinea++;
+                }
+
+                Thread.Sleep(80);
+            }
+
+            Console.WriteLine("\nPulsa INTRO para continuar...");
+            Console.ReadLine();
+            hiloMusica.Abort();
             Console.ResetColor();
             Console.Clear();       
         }
@@ -51,9 +93,13 @@ namespace RpgSaltConsola
             bool terminado = false;
 
             Console.WriteLine("Introduce tu nombre: ");
-            nombre = Hardware.LeerString();
-            Console.WriteLine("Perteneces al sexo masculino/femenino?");
-            sexo = Hardware.LeerString();
+            Console.ReadKey();
+            Console.WriteLine("\nMe da igual...");
+            Console.ReadLine();
+            Console.WriteLine("Sexo: (masculino/femenino)?");
+            Console.ReadLine();
+            Console.WriteLine("Esto tampoco servía de nada...");
+            Console.ReadLine();
 
             do
             {
@@ -80,6 +126,17 @@ namespace RpgSaltConsola
                     aux =Hardware.LeerString().ToLower();
                 } while (aux.CompareTo("s") != 0 && aux.CompareTo("n") != 0);
 
+                if(arquetipo == 4)
+                {
+                    Console.WriteLine("Introduce la contraseña del arquetipo supremo: ");
+                    string pass = Console.ReadLine();
+                    if(pass.CompareTo("iesmutxamel") != 0)
+                    {
+                        Console.WriteLine("Constraseña incorrecta.\nPulsa INTRO para continuar...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                }
                 if (aux.CompareTo("s") == 0)
                 {
                     Console.WriteLine("LLegaras a ser un gran {0} pues"
