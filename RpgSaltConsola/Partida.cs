@@ -8,6 +8,8 @@ namespace RpgSaltConsola
         private ClaseAGuardar c;
         private bool[] posibilidadMovimiento = new bool[4];
         private bool exitGame = false;
+        private int battleProbability = 10;
+        private bool positionIsMaze = false;
 
         //Mapa del mundo
         private string[] mapa =
@@ -47,6 +49,7 @@ namespace RpgSaltConsola
 
             Console.Write("Zona de: ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
+            positionIsMaze = false;
             switch(mapa[c.Y][c.X])
             {
                 case 'p':
@@ -93,14 +96,17 @@ namespace RpgSaltConsola
 
                 case '1':
                     Console.WriteLine("MAZMORRA DEL PESCADOR");
+                    positionIsMaze = true;
                     break;
 
                 case '2':
                     Console.WriteLine("GUARIDA DEL HIELO");
+                    positionIsMaze = true;
                     break;
 
                 case '3':
                     Console.WriteLine("TORRE DEL MARVAO");
+                    positionIsMaze = true;
                     break;
 
                 default:
@@ -132,6 +138,9 @@ namespace RpgSaltConsola
                 Console.Write("Oeste = O\t");
 
             Console.WriteLine(Hardware.NL + "Pulsa \"P\" para acceder al inventario");
+            if (positionIsMaze)
+                Console.WriteLine("Pulsa \"G\" para entrar en la mazmorra.");
+            Console.WriteLine("Pulsa \"Q\" para salir del juego.");
             Console.WriteLine("Introduce una opcion...");
         }
 
@@ -161,6 +170,8 @@ namespace RpgSaltConsola
         
         private void ManageOption(string option)
         {
+            bool calculateBattle = true;
+
             switch(option.ToLower())
             {
                 case "n":
@@ -186,13 +197,39 @@ namespace RpgSaltConsola
                 case "p":
                     Inventory inv = new Inventory(c);
                     inv.Run();
+                    calculateBattle = false;
 
                     break;
+
+                case "g":
+                    if(positionIsMaze)
+                    {
+
+                    }
+                    break;
+
+                case "q":
+                    Environment.Exit(0);
+                    break;
+
                 default:
                     Console.WriteLine("Opción no reconocida...");
                     Console.ReadLine();
+                    calculateBattle = false;
                     break;
+            }
 
+            if(calculateBattle)
+            {
+                if (Char.ToUpper(mapa[c.Y][c.X]) != 'P')
+                {
+                    if (Hardware.GetRandom(1, 100) <= battleProbability)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Batalla!!");
+                        Console.ReadLine();
+                    }
+                }
             }
         }
 

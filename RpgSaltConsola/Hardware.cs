@@ -14,6 +14,14 @@ namespace RpgSaltConsola
         public static string NL = Environment.NewLine;
 
         public static SoundPlayer cursorAtras = new SoundPlayer(EFFECTS_PATH + "cursorAtras.wav");
+        private static Random gen = new Random();
+
+        public static int GetRandom(int min, int max)
+        {
+            int difference = max - min;
+            int n = gen.Next() % (difference + 1);
+            return n + min;
+        }
 
         public static void BorrarLinea (int linea)
         {
