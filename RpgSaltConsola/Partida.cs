@@ -33,6 +33,11 @@ namespace RpgSaltConsola
             c.Y = 8;
         }
 
+        public Partida(ClaseAGuardar c)
+        {
+            this.c = c;
+        }
+
         /*-----MÉTODOS----*/
         public void MostrarInformacion()
         {
@@ -133,21 +138,24 @@ namespace RpgSaltConsola
 
         public bool PosibleMoverCasilla(int x, int y, int x2, int y2)
         {
-            bool posible = true;
+            bool possible = true;
 
-            //Comprobar distancia de mas de una casilla o en su diagonal
-            if (Math.Abs(x - x2) + Math.Abs(y - y2) > 1)
-                posible = false;
-            //Comprobar casilla fuera de los límites del mapa
-            else if (x2 < 0 || x2 >= mapa[y2].Length || y2 < 0 
-                || y2 >= mapa.Length)
-                posible = false;
-            //Comprobar muros de letras mayusculas distintas a actual
-            else if (Char.IsUpper(mapa[y2][x2]) && mapa[y2][x2] 
-                    != Char.ToUpper(mapa[y][x]))
-                posible = false;
+            if (x2 < 0 || x2 >= mapa[y].Length || y2 < 0 || y2 >= mapa.Length)
+                possible = false;
+            else
+            {
+                int altitude1 = Char.IsUpper(mapa[y][x]) ? 1 : 0;
+                int altitude2 = Char.IsUpper(mapa[y2][x2]) ? 1 : 0;
 
-            return posible;
+                if (mapa[y2][x2] == '-')
+                    possible = false;
+                if (altitude1 != altitude2)
+                    if (Char.ToUpper(mapa[y][x]) != Char.ToUpper(mapa[y2][x2]))
+                        possible = false;
+            }
+            
+
+            return possible;
         }
 
         
@@ -156,19 +164,33 @@ namespace RpgSaltConsola
             switch(option.ToLower())
             {
                 case "n":
+                    if (posibilidadMovimiento[0])
+                        c.Y--;
                     break;
+
                 case "s":
+                    if (posibilidadMovimiento[2])
+                        c.Y++;
                     break;
+
                 case "o":
+                    if (posibilidadMovimiento[3])
+                        c.X--;
                     break;
+
                 case "e":
+                    if (posibilidadMovimiento[1])
+                        c.X++;
                     break;
+
                 case "p":
-                    Inventory inv = new Inventory(c.Protagonista);
+                    Inventory inv = new Inventory(c);
                     inv.Run();
 
                     break;
                 default:
+                    Console.WriteLine("Opción no reconocida...");
+                    Console.ReadLine();
                     break;
 
             }

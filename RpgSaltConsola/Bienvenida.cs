@@ -10,7 +10,7 @@ namespace RpgSaltConsola
         private static Cursor cursor;
         private static Bienvenida instancia;
         private static SoundPlayer errorCargar;
-        private static SoundPlayer cargarExito;
+        public static SoundPlayer cargarExito;
 
         public static bool Terminado { get; set; }
         public static bool NuevaPartida { get; set; }

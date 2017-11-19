@@ -1,0 +1,6 @@
+wooden_sword;Espada de madera;Exactamente la misma que tenias de criajo;WEAPON;ATTACK;2
+wooden_bow;Arco de madera;Exactamente el mismo que tenias de criajo;WEAPON;ATTACK;1
+wooden_stick;Bastón de madera;Exactamente el mismo que tenia tu abuelo de criajo;WEAPON;ATTACK;2
+tm_costume;Botarga terra mitica;El botarga de la ranita de terra mitica edicion coleccionista;WEAPON;ATTACK,DEFENSE;20,20
+little_potion;Pocion diminuta;Tampoco es que cure todos los males, pero ayuda;USABLE;LIFE;20
+strength_potion;Pocion de fuerza;Durante la batalla aumenta tu fuerza en 2 puntos;BATTLE_ITEM;STRENGTH;2

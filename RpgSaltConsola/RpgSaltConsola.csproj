@@ -48,6 +48,7 @@
     <Compile Include="Hardware.cs" />
     <Compile Include="Introduccion.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="MapaAscii.cs" />
     <Compile Include="Partida.cs" />

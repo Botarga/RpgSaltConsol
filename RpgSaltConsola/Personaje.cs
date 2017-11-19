@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace RpgSaltConsola
 {
@@ -21,6 +21,8 @@ namespace RpgSaltConsola
         private int defensa;
         private int nivel;
 
+        private List<Tuple<string, int>> items = new List<Tuple<string, int>>();
+        
         /*-----CONSTRUCTORES-----*/
         public Personaje(string nombre, string sexo, int fuerza, int destreza
             , int inteligencia, int constitucion, int vida, int ataque
@@ -38,6 +40,35 @@ namespace RpgSaltConsola
             this.nivel = nivel;
 
             vidaMax = constitucion * 10;
+        }
+
+        public void AddItem(string key, int quantity)
+        {
+            int index = items.FindIndex(i => i.Item1.CompareTo(key) == 0);
+            if (index == -1)
+                items.Add(new Tuple<string, int>(key, quantity));
+            else
+            {
+                int current = items[index].Item2;
+                items.RemoveAt(index);
+                items.Add(new Tuple<string, int>(key, quantity + current));
+            }
+        }
+
+        public void RemoveItem(string key, int quantity)
+        {
+            int index = items.FindIndex(i => i.Item1.CompareTo(key) == 0);
+            if(index != -1)
+            {
+                int current = items[index].Item2;
+                items.RemoveAt(index);
+                items.Add(new Tuple<string, int>(key, quantity + current));
+            }
+        }
+
+        public List<Tuple<string, int>> GetItems()
+        {
+            return items;
         }
     }
 }

@@ -8,19 +8,10 @@ namespace RpgSaltConsola
     {
         private static Random generador = new Random(DateTime.Now.Millisecond);
 
-
-        struct Estrella
-        {
-            public int x;
-            public int y;
-            public int incX;
-            public int incY;
-        }
-
         private static CancionBeep intro;
         private static Personaje p;
         private Thread hiloMusica;
-        private static string nombre, sexo;
+        private string weapon;
         private static int fuerza, inteligencia, destreza, constitucion, atBas
             , defensa, vida, arquetipo;
 
@@ -42,8 +33,13 @@ namespace RpgSaltConsola
             DistribucionParametros();
             CalculosFinales();
             
-            return new Personaje(nombre, sexo, fuerza, destreza, inteligencia
+            p =  new Personaje("", "", fuerza, destreza, inteligencia
                 , constitucion, vida, atBas, defensa);
+
+            p.AddItem("little_potion", 5);
+            p.AddItem("strength_potion", 2);
+            p.AddItem(weapon, 1);
+            return p;
         }
 
 
@@ -107,7 +103,7 @@ namespace RpgSaltConsola
                 Console.SetCursorPosition(25, 0);
                 Console.WriteLine("|Interfaz de eleccion de arquetipo|\n");
 
-                Console.WriteLine("Selecciona tu arquetipo {0}\n\n", nombre);
+                Console.WriteLine("Selecciona tu arquetipo {0}\n\n");
                 for (int i = 0; i < arquetipos.Length; i++)
                     Console.WriteLine("\t\t\t{0}. {1}\n\n", i + 1
                         , arquetipos[i]);
@@ -170,7 +166,8 @@ namespace RpgSaltConsola
                            " tu recompensa...\n");
  
                     Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
- 
+
+                    weapon = "wooden_sword";
                     break;
 
                 case 2:
@@ -188,7 +185,7 @@ namespace RpgSaltConsola
                     Console.WriteLine("Lucha con valentia contra las fuerzas canis y veras tu "+
                            "recompensa...");
                     Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
-
+                    weapon = "wooden_bow";
                     break;
 
                 case 3:
@@ -205,6 +202,7 @@ namespace RpgSaltConsola
                            " tu recompensa...\n");
  
                     Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
+                    weapon = "wooden_stick";
                     break;
 
                 case 4:
@@ -222,7 +220,7 @@ namespace RpgSaltConsola
                            " boss, te hara falta haber derrotado a los 3 bosses de las"+
                            " mazmorra \nnuevamente, aunque ya veras que siendo botarga "+
                            " no te costara mucho");
-
+                    weapon = "tm_costume";
                     break;
 
                 default: break;

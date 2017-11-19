@@ -8,12 +8,12 @@ namespace RpgSaltConsola
 {
     class Inventory
     {
-        Personaje character;
+        ClaseAGuardar classRef;
         Cursor c;
-        public Inventory(Personaje p)
+        public Inventory(ClaseAGuardar classRef)
         {
-            character = p;
-            c = new Cursor(Console.BufferWidth / 2 , 4, 4, 3, 0);
+            this.classRef = classRef;
+            c = new Cursor(Console.BufferWidth / 2 -4, 4, 4, 3, 0);
             
         }
 
@@ -28,18 +28,37 @@ namespace RpgSaltConsola
                 if (c.GestionarEvento())
                 {
                     c.Pintar();
-                    switch (c.OpcionActual)
+                    if(c.Salida)
                     {
-                        case 0:
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            exit = true;
-                            break;
+                        switch (c.OpcionActual)
+                        {
+                            case 0:
+                                ShowItems();
+                                Console.ResetColor();
+                                Console.Clear();
+                                printMenu();
+                                c.Pintar();
+                                break;
+
+                            case 1:
+                                ShowWeapons();
+                                Console.ResetColor();
+                                Console.Clear();
+                                printMenu();
+                                c.Pintar();
+                                break;
+
+                            case 2:
+                                Serializador.Guardar(classRef);
+                                Bienvenida.cargarExito.Play();
+                                break;
+
+                            case 3:
+                                exit = true;
+                                break;
+                        }
                     }
+                    
                 }
 
             }
@@ -58,6 +77,98 @@ namespace RpgSaltConsola
                 Console.SetCursorPosition(Console.BufferWidth / 2 - 2, cont);
                 Console.Write(opt);
                 cont += 3;
+            }
+        }
+
+        private void ShowItems()
+        {
+            Console.ResetColor();
+            Console.Clear();
+
+            var items = classRef.Protagonista.GetItems();
+
+            Console.SetCursorPosition(Console.BufferWidth / 2 - 3, 2);
+            Console.Write("ITEMS");
+            int itemCount = 0;
+            for(int i = 0, line = 4; i < items.Count; ++i)
+            {
+                if (Juego.gameItem[items[i].Item1].Type != Item.ItemType.WEAPON)
+                {
+                    Console.SetCursorPosition(Console.BufferWidth / 2 -5, 4 + itemCount);
+                    Console.Write("{0}: {1}", Juego.gameItem[items[i].Item1].Name,
+                        items[i].Item2);
+                    line ++;
+                    itemCount++;
+                }
+            }
+            Console.SetCursorPosition(Console.BufferWidth / 2 -5, 4 + itemCount);
+            Console.Write("Volver");
+            Cursor c = new Cursor(Console.BufferWidth / 2 -7, 4, itemCount +1, 1, 0);
+            c.Pintar();
+
+
+            bool exit = false;
+            while (!exit)
+            {
+                if(c.GestionarEvento())
+                {
+                    c.Pintar();
+                    if(c.Salida)
+                    {
+                        if(c.OpcionActual == itemCount)
+                            exit = true;
+                        else
+                        {
+                            // Consumir item
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        private void ShowWeapons()
+        {
+            Console.ResetColor();
+            Console.Clear();
+
+            var items = classRef.Protagonista.GetItems();
+
+            Console.SetCursorPosition(Console.BufferWidth / 2 - 3, 2);
+            Console.Write("ARMAS");
+            int itemCount = 0;
+            for (int i = 0, line = 4; i < items.Count; ++i)
+            {
+                if (Juego.gameItem[items[i].Item1].Type == Item.ItemType.WEAPON)
+                {
+                    Console.SetCursorPosition(Console.BufferWidth / 2 - 5, 4 + itemCount);
+                    Console.Write("{0}", Juego.gameItem[items[i].Item1].Name);
+                    line++;
+                    itemCount++;
+                }
+            }
+            Console.SetCursorPosition(Console.BufferWidth / 2 - 5, 4 + itemCount);
+            Console.Write("Volver");
+            Cursor c = new Cursor(Console.BufferWidth / 2 - 7, 4, itemCount + 1, 1, 0);
+            c.Pintar();
+
+
+            bool exit = false;
+            while (!exit)
+            {
+                if (c.GestionarEvento())
+                {
+                    c.Pintar();
+                    if (c.Salida)
+                    {
+                        if (c.OpcionActual == itemCount)
+                            exit = true;
+                        else
+                        {
+                            // Consumir item
+                        }
+                    }
+                }
             }
         }
     }

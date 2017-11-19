@@ -3,7 +3,14 @@
 namespace RpgSaltConsola
 {
     public class Hardware
-    { 
+    {
+        public static string SEPARATOR = "" + System.IO.Path.PathSeparator;
+        public static string ROOT_PATH = ".." + SEPARATOR + ".." + SEPARATOR;
+        public static string DATA_PATH = ROOT_PATH + "datos" + SEPARATOR;
+        public static string EFFECTS_PATH = ROOT_PATH + "efectos" + SEPARATOR;
+        public static string ASCII_ART_PATH = ROOT_PATH + "arteAscii" + SEPARATOR;
+        public static string BEEP_PATH = ROOT_PATH + "cancionBeep" + SEPARATOR;
+
         public static void BorrarLinea (int linea)
         {
             Console.SetCursorPosition(0, linea);
@@ -57,6 +64,11 @@ namespace RpgSaltConsola
             }
 
             return n;
+        }
+
+        public static T ParseEnum<T>(string value)
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
         }
     }
 }
