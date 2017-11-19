@@ -51,6 +51,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="MapaAscii.cs" />
+    <Compile Include="Maze.cs" />
     <Compile Include="Partida.cs" />
     <Compile Include="Personaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

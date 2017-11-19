@@ -18,7 +18,7 @@ namespace RpgSaltConsola
 
         public string[][] LoadMazeContent(string path)
         {
-            string[][] r = new string[][];
+            string[][] r = new string[10][];
 
 
             return r;
