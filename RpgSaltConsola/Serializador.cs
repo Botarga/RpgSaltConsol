@@ -7,7 +7,7 @@ namespace RpgSaltConsola
 {
     public class Serializador
     {
-        private static string ruta = @"..\..\datos\datos.dat";
+        private static string ruta = Hardware.DATA_PATH + "datos.dat";
 
         public static void Guardar (ClaseAGuardar c)
         {

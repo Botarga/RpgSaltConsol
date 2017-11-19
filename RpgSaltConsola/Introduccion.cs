@@ -243,9 +243,9 @@ namespace RpgSaltConsola
             Console.WriteLine("|Interfaz de distribución de parámetros|" + Hardware.NL + Hardware.NL);
 
             Console.WriteLine("Distribuye tus puntos de desarrollo, para ello "
-                + " debes de pulsar el numero \ncorrespondiente de aumentar o "
+                + " debes de pulsar el numero " + Hardware.NL + "correspondiente de aumentar o "
                 + "disminuir puntuacion...");
-            Console.WriteLine("Puntos Restantes: {0:D2}\n", numPuntos);
+            Console.WriteLine("Puntos Restantes: {0:D2}" + Hardware.NL, numPuntos);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Aumentar\tParametro\tDisminuir\tTotal");
@@ -255,7 +255,7 @@ namespace RpgSaltConsola
             Console.WriteLine("   5    \tInteligencia\t    6    \t {0:D2}", inteligencia);
             Console.WriteLine("   7    \tConstitución\t    8    \t {0:D2}", constitucion);
 
-            Console.WriteLine("\nPulsa el numero correspondiente (9 para terminar)...");
+            Console.WriteLine(Hardware.NL + "Pulsa el numero correspondiente (9 para terminar)...");
 
             while (!terminado)
             {

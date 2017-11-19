@@ -4,7 +4,7 @@ namespace RpgSaltConsola
 {
     public class Hardware
     {
-        public static string SEPARATOR = "" + System.IO.Path.PathSeparator;
+        public static string SEPARATOR = "" + System.IO.Path.DirectorySeparatorChar;
         public static string ROOT_PATH = ".." + SEPARATOR + ".." + SEPARATOR;
         public static string DATA_PATH = ROOT_PATH + "datos" + SEPARATOR;
         public static string EFFECTS_PATH = ROOT_PATH + "efectos" + SEPARATOR;

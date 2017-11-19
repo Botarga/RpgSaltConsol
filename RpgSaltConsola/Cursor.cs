@@ -18,7 +18,7 @@ namespace RpgSaltConsola
         public Cursor(int x, int y, int numOpciones, int distancia = 1
             , int opcionActual = 0)
         {
-            cursorMover = new SoundPlayer(@"..\..\efectos\cursorMover.wav");
+            cursorMover = new SoundPlayer(Hardware.EFFECTS_PATH + "cursorMover.wav");
             this.x = x;
             this.y = y;
             this.numOpciones = numOpciones;

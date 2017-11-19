@@ -131,7 +131,7 @@ namespace RpgSaltConsola
             if (posibilidadMovimiento[3])
                 Console.Write("Oeste = O\t");
 
-            Console.WriteLine("\nPulsa \"P\" para acceder al inventario");
+            Console.WriteLine(Hardware.NL + "Pulsa \"P\" para acceder al inventario");
             Console.WriteLine("Introduce una opcion...");
         }
 

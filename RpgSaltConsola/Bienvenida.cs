@@ -47,7 +47,7 @@ namespace RpgSaltConsola
                                 break;
 
                             case 1:
-                                if (!File.Exists(@"..\..\datos\datos.dat"))
+                                if (!File.Exists(Hardware.DATA_PATH + "datos.dat"))
                                     errorCargar.Play();
                                 else
                                 {
@@ -74,7 +74,7 @@ namespace RpgSaltConsola
             Console.WriteLine("Nueva partida");
 
             Console.SetCursorPosition(60, 22);
-            Console.ForegroundColor = (File.Exists(@"..\..\datos\datos.dat")) ?
+            Console.ForegroundColor = (File.Exists(Hardware.DATA_PATH + "datos.dat")) ?
                 ConsoleColor.DarkYellow : ConsoleColor.Red;
             Console.WriteLine("Cargar Partida");
 
