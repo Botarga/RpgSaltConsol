@@ -6,7 +6,7 @@ namespace RpgSaltConsola
 {
     public class Juego
     {
-        public const bool NO_INTRO = true;
+        public const bool NO_INTRO = false;
         public static Dictionary<string, Item> gameItem;
 
         public Juego()

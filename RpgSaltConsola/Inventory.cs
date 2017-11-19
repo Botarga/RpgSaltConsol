@@ -13,7 +13,7 @@ namespace RpgSaltConsola
         public Inventory(ClaseAGuardar classRef)
         {
             this.classRef = classRef;
-            c = new Cursor(Console.BufferWidth / 2 -4, 4, 4, 3, 0);
+            c = new Cursor(Console.BufferWidth / 2 -4, 4, 5, 3, 0);
             
         }
 
@@ -33,6 +33,9 @@ namespace RpgSaltConsola
                         switch (c.OpcionActual)
                         {
                             case 0:
+                                break;
+
+                            case 1:
                                 ShowItems();
                                 Console.ResetColor();
                                 Console.Clear();
@@ -40,7 +43,7 @@ namespace RpgSaltConsola
                                 c.Pintar();
                                 break;
 
-                            case 1:
+                            case 2:
                                 ShowWeapons();
                                 Console.ResetColor();
                                 Console.Clear();
@@ -48,12 +51,12 @@ namespace RpgSaltConsola
                                 c.Pintar();
                                 break;
 
-                            case 2:
+                            case 3:
                                 Serializador.Guardar(classRef);
                                 Bienvenida.cargarExito.Play();
                                 break;
 
-                            case 3:
+                            case 4:
                                 exit = true;
                                 break;
                         }
@@ -72,7 +75,7 @@ namespace RpgSaltConsola
             Console.SetCursorPosition(Console.BufferWidth / 2 - 5, 2);
             Console.WriteLine("INVENTARIO");
             int cont = 4;
-            foreach (String opt in new string[] { "Items", "Armas", "Guardar partida", "Salir" })
+            foreach (String opt in new string[] { "Estado", "Items", "Armas", "Guardar partida", "Salir" })
             {
                 Console.SetCursorPosition(Console.BufferWidth / 2 - 2, cont);
                 Console.Write(opt);
