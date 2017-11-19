@@ -124,7 +124,8 @@ namespace RpgSaltConsola
             Console.SetCursorPosition(Console.BufferWidth / 2 - 3, 2);
             Console.Write("ITEMS");
             int itemCount = 0;
-            for(int i = 0, line = 4; i < items.Count; ++i)
+            List<int> itemsIds = new List<int>();
+            for (int i = 0, line = 4; i < items.Count; ++i)
             {
                 if (Juego.gameItem[items[i].Item1].Type != Item.ItemType.WEAPON)
                 {
@@ -133,6 +134,7 @@ namespace RpgSaltConsola
                         items[i].Item2);
                     line ++;
                     itemCount++;
+                    itemsIds.Add(i);
                 }
             }
             Console.SetCursorPosition(Console.BufferWidth / 2 -5, 4 + itemCount);
@@ -140,6 +142,8 @@ namespace RpgSaltConsola
             Cursor c = new Cursor(Console.BufferWidth / 2 -7, 4, itemCount +1, 1, 0);
             c.Pintar();
 
+            Console.SetCursorPosition(10, Console.WindowHeight - 2);
+            Console.Write(Juego.gameItem[items[itemsIds[c.OpcionActual]].Item1].Description);
 
             bool exit = false;
             while (!exit)
@@ -147,7 +151,17 @@ namespace RpgSaltConsola
                 if(c.GestionarEvento())
                 {
                     c.Pintar();
-                    if(c.Salida)
+                    if (c.OpcionActual != itemCount)
+                    {
+                        Hardware.BorrarLinea(Console.WindowHeight - 2);
+                        Console.SetCursorPosition(10, Console.WindowHeight - 2);
+                        Console.Write(Juego.gameItem[items[itemsIds[c.OpcionActual]].Item1].Description);
+                    }
+                    else
+                    {
+                        Hardware.BorrarLinea(Console.WindowHeight - 2);
+                    }
+                    if (c.Salida)
                     {
                         if(c.OpcionActual == itemCount)
                             exit = true;
@@ -172,6 +186,8 @@ namespace RpgSaltConsola
             Console.SetCursorPosition(Console.BufferWidth / 2 - 3, 2);
             Console.Write("ARMAS");
             int itemCount = 0;
+            List<int> weaponsIds = new List<int>();
+
             for (int i = 0, line = 4; i < items.Count; ++i)
             {
                 if (Juego.gameItem[items[i].Item1].Type == Item.ItemType.WEAPON)
@@ -180,6 +196,7 @@ namespace RpgSaltConsola
                     Console.Write("{0}", Juego.gameItem[items[i].Item1].Name);
                     line++;
                     itemCount++;
+                    weaponsIds.Add(i);
                 }
             }
             Console.SetCursorPosition(Console.BufferWidth / 2 - 5, 4 + itemCount);
@@ -187,6 +204,8 @@ namespace RpgSaltConsola
             Cursor c = new Cursor(Console.BufferWidth / 2 - 7, 4, itemCount + 1, 1, 0);
             c.Pintar();
 
+            Console.SetCursorPosition(10, Console.WindowHeight - 2);
+            Console.Write(Juego.gameItem[items[weaponsIds[c.OpcionActual]].Item1].Description);
 
             bool exit = false;
             while (!exit)
@@ -194,6 +213,16 @@ namespace RpgSaltConsola
                 if (c.GestionarEvento())
                 {
                     c.Pintar();
+                    if (c.OpcionActual != itemCount)
+                    {
+                        Hardware.BorrarLinea(Console.WindowHeight - 2);
+                        Console.SetCursorPosition(10, Console.WindowHeight - 2);
+                        Console.Write(Juego.gameItem[items[weaponsIds[c.OpcionActual]].Item1].Description);
+                    }
+                    else
+                    {
+                        Hardware.BorrarLinea(Console.WindowHeight - 2);
+                    }
                     if (c.Salida)
                     {
                         if (c.OpcionActual == itemCount)
