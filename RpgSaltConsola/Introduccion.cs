@@ -17,7 +17,7 @@ namespace RpgSaltConsola
 
         public Introduccion()
         {
-            intro = new CancionBeep(@"..\..\cancionBeep\mainFF.txt");
+            intro = new CancionBeep(Hardware.BEEP_PATH + "mainFF.txt");
             hiloMusica = new Thread(intro.Reproducir);
         }
 
@@ -74,7 +74,7 @@ namespace RpgSaltConsola
                 Thread.Sleep(80);
             }
 
-            Console.WriteLine("\nPulsa INTRO para continuar...");
+            Console.WriteLine(Hardware.NL + "Pulsa INTRO para continuar...");
             Console.ReadLine();
             hiloMusica.Abort();
             Console.ResetColor();
@@ -90,7 +90,7 @@ namespace RpgSaltConsola
 
             Console.WriteLine("Introduce tu nombre: ");
             Console.ReadKey();
-            Console.WriteLine("\nMe da igual...");
+            Console.WriteLine(Hardware.NL + "Me da igual...");
             Console.ReadLine();
             Console.WriteLine("Sexo: (masculino/femenino)?");
             Console.ReadLine();
@@ -101,11 +101,11 @@ namespace RpgSaltConsola
             {
                 Console.Clear();
                 Console.SetCursorPosition(25, 0);
-                Console.WriteLine("|Interfaz de eleccion de arquetipo|\n");
+                Console.WriteLine("|Interfaz de eleccion de arquetipo|" + Hardware.NL);
 
-                Console.WriteLine("Selecciona tu arquetipo {0}\n\n");
+                Console.WriteLine("Selecciona tu arquetipo {0}" + Hardware.NL + Hardware.NL);
                 for (int i = 0; i < arquetipos.Length; i++)
-                    Console.WriteLine("\t\t\t{0}. {1}\n\n", i + 1
+                    Console.WriteLine("\t\t\t{0}. {1}" + Hardware.NL + Hardware.NL, i + 1
                         , arquetipos[i]);
 
                 do 
@@ -128,7 +128,7 @@ namespace RpgSaltConsola
                     string pass = Console.ReadLine();
                     if(pass.CompareTo("iesmutxamel") != 0)
                     {
-                        Console.WriteLine("Constraseña incorrecta.\nPulsa INTRO para continuar...");
+                        Console.WriteLine("Constraseña incorrecta." + Hardware.NL + "Pulsa INTRO para continuar...");
                         Console.ReadLine();
                         continue;
                     }
@@ -154,18 +154,18 @@ namespace RpgSaltConsola
                     atBas = 20;
                     defensa = 15;
                     
-                    Console.WriteLine("ARQUETIPO GUERRERO\n\n");
+                    Console.WriteLine("ARQUETIPO GUERRERO" + Hardware.NL + Hardware.NL);
                     Console.WriteLine("El guerrero es un soldado que utiliza la espada como arma"+
-                           "principal, pero esta  \nentrenado para utilizar todo tipo de"+
-                           "armas.\nTiene una gran defensa y utiliza su fuerza para "+
-                           "asentar poderosos golpes\n Viene de tierras lejanas donde"+
+                           "principal, pero esta" + Hardware.NL + "entrenado para utilizar todo tipo de"+
+                           "armas." +Hardware.NL + "Tiene una gran defensa y utiliza su fuerza para "+
+                           "asentar poderosos golpes" + Hardware.NL + " Viene de tierras lejanas donde"+
                            "es un poderoso heroe.");
-                    Console.WriteLine("\nSon muy utiles atacando de cuerpo a cuerpo, poseen una"+
-                           "agilidad limitada.\n");
-                    Console.WriteLine("\nLucha con valentia contra las fuerzas malevolas y veras"+
-                           " tu recompensa...\n");
+                    Console.WriteLine(Hardware.NL + "Son muy utiles atacando de cuerpo a cuerpo, poseen una"+
+                           "agilidad limitada." +Hardware.NL);
+                    Console.WriteLine(Hardware.NL + "Lucha con valentia contra las fuerzas malevolas y veras"+
+                           " tu recompensa..." +Hardware.NL);
  
-                    Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
+                    Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
 
                     weapon = "wooden_sword";
                     break;
@@ -174,17 +174,17 @@ namespace RpgSaltConsola
                     atBas = 15;
                     defensa = 10;
 
-                    Console.WriteLine("ARQUETIPO ARQUERO\n");
+                    Console.WriteLine("ARQUETIPO ARQUERO" +Hardware.NL);
                     Console.WriteLine("El arquero es un soldado que dispara flechas con un arco,"+
-                           "una varilla hecha de\nacero, madera u otra materia "+
+                           "una varilla hecha de" +Hardware.NL + "acero, madera u otra materia "+
                            "elastica sujeta por los extremos con una cuerda o  bordon,"+
                            "de modo que forme una curva");
                     Console.WriteLine("Son muy utiles atacando a distancias largas ademas de "+
-                           "poseer una gran agilidad.\nLos arqueros son provenientes "+
-                           "del bosque encantado al sureste de:\nLa tierra de Salt");
+                           "poseer una gran agilidad." +Hardware.NL + "Los arqueros son provenientes "+
+                           "del bosque encantado al sureste de:" +Hardware.NL + "La tierra de Salt");
                     Console.WriteLine("Lucha con valentia contra las fuerzas canis y veras tu "+
                            "recompensa...");
-                    Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
+                    Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
                     weapon = "wooden_bow";
                     break;
 
@@ -192,16 +192,16 @@ namespace RpgSaltConsola
                     atBas = 5;
                     defensa = 5;
                     
-                    Console.WriteLine("ARQUETIPO MAGO\n\n");
+                    Console.WriteLine("ARQUETIPO MAGO" +Hardware.NL + Hardware.NL);
                     Console.WriteLine("El mago en esta version beta no esta desarrollado, como "+
                            "programadores te recomendamos reiniciar el juego y coger"+
                            "otra clase, aunque no es imposible pasarse el juego con "+
                            "esta clase, si que es un poco inutil :D");
 
-                    Console.WriteLine("\nLucha con valentia contra las fuerzas malevolas y veras"+
-                           " tu recompensa...\n");
+                    Console.WriteLine(Hardware.NL + "Lucha con valentia contra las fuerzas malevolas y veras"+
+                           " tu recompensa..." +Hardware.NL);
  
-                    Console.WriteLine("\nPULSA INTRO PARA CONTINUAR...");
+                    Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
                     weapon = "wooden_stick";
                     break;
 
@@ -209,16 +209,16 @@ namespace RpgSaltConsola
                     atBas = 99;
                     defensa = 99;
 
-                    Console.WriteLine("ARQUETIPO BOTARGA\n");
-                    Console.WriteLine("\nBienvenido a la clase botarga, como programadores nos "+
-                           "llena de orgullo que \nhayais llegado hasta este arquetipo,"+
-                           " te queda un ultimo reto... \n\nEn alguna casilla escondida"+
+                    Console.WriteLine("ARQUETIPO BOTARGA" +Hardware.NL);
+                    Console.WriteLine(Hardware.NL + "Bienvenido a la clase botarga, como programadores nos "+
+                           "llena de orgullo que " +Hardware.NL + "hayais llegado hasta este arquetipo,"+
+                           " te queda un ultimo reto..." + Hardware.NL + Hardware.NL + "En alguna casilla escondida"+
                            " del reino de Salt, esta escondido el boss supremo, "+
-                           "\nsolo aparecera en una batalla aleatoria, y solo en esa"+
-                           " coordenada, encuentralo \nacaba con el y devuelve la paz"+
-                           " a estas tierras, por cierto, para poder luchar\ncontra ese"+
+                           Hardware.NL + "solo aparecera en una batalla aleatoria, y solo en esa"+
+                           " coordenada, encuentralo " +Hardware.NL + "acaba con el y devuelve la paz"+
+                           " a estas tierras, por cierto, para poder luchar" +Hardware.NL + "contra ese"+
                            " boss, te hara falta haber derrotado a los 3 bosses de las"+
-                           " mazmorra \nnuevamente, aunque ya veras que siendo botarga "+
+                           " mazmorra " +Hardware.NL + "nuevamente, aunque ya veras que siendo botarga "+
                            " no te costara mucho");
                     weapon = "tm_costume";
                     break;
@@ -240,7 +240,7 @@ namespace RpgSaltConsola
 
             Console.Clear();
             Console.SetCursorPosition(20, 0);
-            Console.WriteLine("|Interfaz de distribución de parámetros|\n\n");
+            Console.WriteLine("|Interfaz de distribución de parámetros|" + Hardware.NL + Hardware.NL);
 
             Console.WriteLine("Distribuye tus puntos de desarrollo, para ello "
                 + " debes de pulsar el numero \ncorrespondiente de aumentar o "

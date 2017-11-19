@@ -19,10 +19,10 @@ namespace RpgSaltConsola
         /*-----CONSTRUCTORES-----*/
         private Bienvenida()
         {
-            mapa = new MapaAscii(@"..\..\arteAscii\espada.txt");
+            mapa = new MapaAscii(Hardware.ASCII_ART_PATH + "espada.txt");
             cursor = new Cursor(58, 20, 2, 2, 0);
-            errorCargar = new SoundPlayer(@"..\..\efectos\cursorError.wav");
-            cargarExito = new SoundPlayer(@"..\..\efectos\cargarExito.wav");
+            errorCargar = new SoundPlayer(Hardware.EFFECTS_PATH + "cursorError.wav");
+            cargarExito = new SoundPlayer(Hardware.EFFECTS_PATH + "cargarExito.wav");
         }
 
 

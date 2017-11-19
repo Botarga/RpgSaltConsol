@@ -21,7 +21,7 @@ namespace RpgSaltConsola
         private void LoadItemsData()
         {
             gameItem = new Dictionary<string, Item>();
-            string[] content = File.ReadAllText(@"..\..\datos\items.dat").Split("\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string[] content = File.ReadAllText(Hardware.DATA_PATH + "items.dat").Split(Hardware.NL.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             foreach(string rawInfo in content)
             {
                 string[] info = rawInfo.Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
