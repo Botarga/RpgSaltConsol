@@ -14,6 +14,7 @@ namespace RpgSaltConsola
         private string weapon;
         private static int fuerza, inteligencia, destreza, constitucion, atBas
             , defensa, vida, arquetipo;
+        private string arquetipoText;
 
         public Introduccion()
         {
@@ -33,7 +34,7 @@ namespace RpgSaltConsola
             DistribucionParametros();
             CalculosFinales();
             
-            p =  new Personaje("", "", fuerza, destreza, inteligencia
+            p =  new Personaje(arquetipoText, "", "", fuerza, destreza, inteligencia
                 , constitucion, vida, atBas, defensa);
 
             p.AddItem("little_potion", 5);
@@ -168,6 +169,7 @@ namespace RpgSaltConsola
                     Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
 
                     weapon = "wooden_sword";
+                    arquetipoText = "Guerrero";
                     break;
 
                 case 2:
@@ -186,6 +188,7 @@ namespace RpgSaltConsola
                            "recompensa...");
                     Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
                     weapon = "wooden_bow";
+                    arquetipoText = "Arquero";
                     break;
 
                 case 3:
@@ -202,6 +205,7 @@ namespace RpgSaltConsola
                            " tu recompensa..." +Hardware.NL);
  
                     Console.WriteLine(Hardware.NL + "PULSA INTRO PARA CONTINUAR...");
+                    arquetipoText = "Mago";
                     weapon = "wooden_stick";
                     break;
 
@@ -221,6 +225,7 @@ namespace RpgSaltConsola
                            " mazmorra " +Hardware.NL + "nuevamente, aunque ya veras que siendo botarga "+
                            " no te costara mucho");
                     weapon = "tm_costume";
+                    arquetipoText = "Botarga";
                     break;
 
                 default: break;

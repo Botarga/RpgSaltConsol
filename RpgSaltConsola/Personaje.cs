@@ -7,29 +7,26 @@ namespace RpgSaltConsola
     public class Personaje
     {
         /*-----ATRIBUTOS-----*/
-        private string nombre;
-        private string sexo;
+        public string arquetipo;
+        public int fuerza;
+        public int destreza;
+        public int inteligencia;
+        public int constitucion;
 
-        private int fuerza;
-        private int destreza;
-        private int inteligencia;
-        private int constitucion;
-
-        private int vida;
-        private int vidaMax;
-        private int ataque;
-        private int defensa;
-        private int nivel;
+        public int vida;
+        public int vidaMax;
+        public int ataque;
+        public int defensa;
+        public int nivel;
 
         private List<Tuple<string, int>> items = new List<Tuple<string, int>>();
         
         /*-----CONSTRUCTORES-----*/
-        public Personaje(string nombre, string sexo, int fuerza, int destreza
+        public Personaje(string arquetipo, string nombre, string sexo, int fuerza, int destreza
             , int inteligencia, int constitucion, int vida, int ataque
             , int defensa, int nivel = 1)
         {
-            this.nombre = nombre;
-            this.sexo = sexo;
+            this.arquetipo = arquetipo;
             this.fuerza = fuerza;
             this.destreza = destreza;
             this.inteligencia = inteligencia;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 
 namespace RpgSaltConsola
 {
@@ -11,6 +12,8 @@ namespace RpgSaltConsola
         public static string ASCII_ART_PATH = ROOT_PATH + "arteAscii" + SEPARATOR;
         public static string BEEP_PATH = ROOT_PATH + "cancionBeep" + SEPARATOR;
         public static string NL = Environment.NewLine;
+
+        public static SoundPlayer cursorAtras = new SoundPlayer(EFFECTS_PATH + "cursorAtras.wav");
 
         public static void BorrarLinea (int linea)
         {

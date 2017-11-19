@@ -33,6 +33,11 @@ namespace RpgSaltConsola
                         switch (c.OpcionActual)
                         {
                             case 0:
+                                ShowStatus();
+                                Console.ResetColor();
+                                Console.Clear();
+                                printMenu();
+                                c.Pintar();
                                 break;
 
                             case 1:
@@ -58,6 +63,7 @@ namespace RpgSaltConsola
 
                             case 4:
                                 exit = true;
+                                Hardware.cursorAtras.Play();
                                 break;
                         }
                     }
@@ -81,6 +87,31 @@ namespace RpgSaltConsola
                 Console.Write(opt);
                 cont += 3;
             }
+        }
+
+        private void ShowStatus()
+        {
+            Console.ResetColor();
+            Console.Clear();
+
+            var p = classRef.Protagonista;
+
+            Console.WriteLine("ESTADO");
+            Console.WriteLine("Arquetipo: {0}", p.arquetipo);
+            Console.WriteLine("Nivel: {0}", p.nivel);
+            Console.WriteLine("Vida: {0}/{1}", p.vida, p.vidaMax);
+            Console.WriteLine("Ataque: {0}", p.ataque);
+            Console.WriteLine("Defensa: {0}", p.defensa);
+
+            Console.WriteLine(Hardware.NL + "DESTREZAS:");
+            Console.WriteLine("Fuerza: {0}", p.fuerza);
+            Console.WriteLine("Inteligencia: {0}", p.inteligencia);
+            Console.WriteLine("Destreza: {0}", p.destreza);
+            Console.WriteLine("Constitucion: {0}", p.constitucion);
+
+            Console.WriteLine(Hardware.NL + "Pulsa INTRO para volver...");
+            Console.ReadLine();
+            Hardware.cursorAtras.Play();
         }
 
         private void ShowItems()
@@ -127,7 +158,8 @@ namespace RpgSaltConsola
                     }
                 }
             }
-            
+
+            Hardware.cursorAtras.Play();
         }
 
         private void ShowWeapons()
@@ -173,6 +205,8 @@ namespace RpgSaltConsola
                     }
                 }
             }
+
+            Hardware.cursorAtras.Play();
         }
     }
 }
