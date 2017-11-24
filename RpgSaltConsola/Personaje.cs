@@ -19,6 +19,8 @@ namespace RpgSaltConsola
         public int defensa;
         public int nivel;
 
+        public int[][] mazeKeys;
+
         private List<Tuple<string, int>> items = new List<Tuple<string, int>>();
         
         /*-----CONSTRUCTORES-----*/
@@ -37,6 +39,7 @@ namespace RpgSaltConsola
             this.nivel = nivel;
 
             vidaMax = constitucion * 10;
+            mazeKeys = new int[3][];
         }
 
         public void AddItem(string key, int quantity)

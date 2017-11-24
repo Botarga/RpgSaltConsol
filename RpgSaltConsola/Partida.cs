@@ -204,7 +204,8 @@ namespace RpgSaltConsola
                 case "g":
                     if(positionIsMaze)
                     {
-
+                        Maze m = new Maze(Convert.ToInt32(Char.ToString(mapa[c.Y][c.X])));
+                        m.Run();
                     }
                     break;
 

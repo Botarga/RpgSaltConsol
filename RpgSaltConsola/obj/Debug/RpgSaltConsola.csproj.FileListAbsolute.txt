@@ -20,6 +20,5 @@ C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe.config
 C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.exe
 C:\repos\RpgSaltConsol\RpgSaltConsola\bin\Debug\RpgSaltConsola.pdb
 C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.csprojResolveAssemblyReference.cache
-C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.csproj.CoreCompileInputs.cache
 C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.exe
 C:\repos\RpgSaltConsol\RpgSaltConsola\obj\Debug\RpgSaltConsola.pdb
